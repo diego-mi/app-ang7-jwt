@@ -27,9 +27,18 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/vendors/base/vendors.bundle.css",
+              "src/assets/demo/demo9/base/style.bundle.css",
+              "src/assets/vendors/custom/fullcalendar/fullcalendar.bundle.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/vendors/base/vendors.bundle.js",
+              "src/assets/demo/demo9/base/scripts.bundle.js",
+              "src/assets/vendors/custom/fullcalendar/fullcalendar.bundle.js",
+              "src/assets/app/js/dashboard.js",
+              "src/assets/app/js/my-script.js"
+            ]
           },
           "configurations": {
             "production": {
