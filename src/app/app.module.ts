@@ -15,6 +15,8 @@ import { FooterComponent } from './components/common/footer/footer.component';
 import { AsideLeftComponent } from './components/common/aside-left/aside-left.component';
 import { SubheaderComponent } from './components/common/subheader/subheader.component';
 import { ListComponent } from './components/lancamentos/list/list.component';
+import { LancamentoFormAddComponent } from './components/lancamentos/lancamento-form-add/lancamento-form-add.component';
+import { LayoutComponent } from './components/common/layout/layout.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ListComponent } from './components/lancamentos/list/list.component';
     FooterComponent,
     AsideLeftComponent,
     SubheaderComponent,
-    ListComponent
+    ListComponent,
+    LancamentoFormAddComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
