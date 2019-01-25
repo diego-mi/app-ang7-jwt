@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LancamentoService } from 'src/app/services/lancamento.service';
+import { Lancamento } from 'src/app/models/lancamento';
 
 @Component({
   selector: 'app-list',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+  	lancamentos: Lancamento[] = [];
 
-  constructor() { }
+  	constructor(private lancamentoService: LancamentoService) { }
 
-  ngOnInit() {
-  }
+  	ngOnInit() {
+		this.lancamentoService.getAll().subscribe(lancamentos => {
+			this.lancamentos = lancamentos;
+		});
+	}
 
 }
