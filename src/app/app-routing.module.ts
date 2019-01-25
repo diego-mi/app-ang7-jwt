@@ -4,6 +4,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { ListComponent } from './components/lancamentos/list/list.component';
+import { LancamentoFormAddComponent } from './components/lancamentos/lancamento-form-add/lancamento-form-add.component';
+import { LayoutComponent } from './components/common/layout/layout.component';
 
 const routes: Routes = [
   {
@@ -13,8 +15,18 @@ const routes: Routes = [
   },
   {
     path: 'lancamentos',
-    component: ListComponent,
-    canActivate: [AuthGuard]
+    component: LayoutComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        component: ListComponent
+      },
+      {
+        path: 'adicionar',
+        component: LancamentoFormAddComponent
+      }
+    ]
   },
   {
     path: 'login',
