@@ -13,4 +13,8 @@ export class LancamentoService {
   getAll() {
     return this.http.get<Lancamento[]>(`${environment.urlApi}/lancamentos`);
   }
+
+  add(lancamento: Lancamento) {
+    return this.http.post(`${environment.urlApi}/lancamentos`, lancamento);
+  }
 }

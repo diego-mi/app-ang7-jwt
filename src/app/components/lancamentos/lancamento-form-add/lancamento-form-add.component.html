@@ -40,22 +40,100 @@
                 <form [formGroup]="lancamentoForm" (ngSubmit)="onSubmit()" class="m-form">
                   <div class="m-portlet__body">
                     <div class="m-form__section m-form__section--first">
+
+                      <!-- <input type="hidden" formControlName="tipo" value="lancamento"> -->
+
                       <div class="form-group m-form__group">
                         <label for="categoriaId">Categoria:</label>
                         <select formControlName="categoriaId" class="form-control m-input m-input--square" id="categoriaId" [ngClass]="{ 'is-invalid': submitted && f.categoriaId.errors }">
-                          <option>Selecione</option>
+                          <option value="">Selecione</option>
                           <option *ngFor="let categoria of categorias" value="{{categoria.id}}">
                             {{categoria.nome}}
                           </option>
                         </select>
+                        <div *ngIf="submitted && f.categoriaId.errors" class="invalid-feedback">
+                          <div *ngIf="f.categoriaId.errors.required">Categoria is required</div>
+                        </div>
                       </div>
+
+                      <div class="form-group m-form__group">
+                        <label for="nome">Descrição</label>
+                        <input formControlName="nome" type="text" class="form-control m-input" id="nome">
+                        <div *ngIf="submitted && f.nome.errors" class="invalid-feedback">
+                          <div *ngIf="f.nome.errors.required">Descriçao is required</div>
+                        </div>
+                      </div>
+
                       <div class="form-group m-form__group">
                         <label>Valor</label>
                         <div class="input-group">
-                          <div class="input-group-prepend"><span class="input-group-text" id="basic-addon2">R$</span></div>
+                          <div class="input-group-prepend"><span class="input-group-text">R$</span></div>
                           <input formControlName="valor" type="text" class="form-control m-input" placeholder="99,00">
                         </div>
+                        <div *ngIf="submitted && f.valor.errors" class="invalid-feedback">
+                          <div *ngIf="f.valor.errors.required">Valor is required</div>
+                        </div>
                       </div>
+                      
+                      <div class="form-group m-form__group">
+                        <label for="data">Data</label>
+                        <input formControlName="data" type="text" class="form-control m-input" id="data" placeholder="00/00/0000">
+                        <div *ngIf="submitted && f.data.errors" class="invalid-feedback">
+                          <div *ngIf="f.data.errors.required">Data is required</div>
+                        </div>
+                      </div>
+
+                      <div class="form-group m-form__group">
+                        <label for="tipo_movimentacao">Tipo Movimentação:</label>
+                        <select formControlName="tipoMovimentacao" class="form-control m-input m-input--square" id="tipo_movimentacao"
+                          [ngClass]="{ 'is-invalid': submitted && f.categoriaId.errors }">
+                          <option value="" selected>Selecione</option>
+                          <option *ngFor="let tipoMovimentacao of tipoMovimentacoes" value="{{tipoMovimentacao.id}}">
+                            {{tipoMovimentacao.text}}
+                          </option>
+                        </select>
+                        <div *ngIf="submitted && f.tipoMovimentacao.errors" class="invalid-feedback">
+                          <div *ngIf="f.tipoMovimentacao.errors.required">Tipo Movimentação is required</div>
+                        </div>
+                      </div>
+
+                      <div class="form-group m-form__group">
+                        <label for="tipo_movimentacao">Situação:</label>
+                        <select formControlName="situacao" class="form-control m-input m-input--square" id="tipo_movimentacao" [ngClass]="{ 'is-invalid': submitted && f.categoriaId.errors }">
+                          <option value="" selected>Selecione</option>
+                          <option *ngFor="let situacao of situacoes" value="{{situacao.id}}">
+                            {{situacao.text}}
+                          </option>
+                        </select>
+                        <div *ngIf="submitted && f.situacao.errors" class="invalid-feedback">
+                          <div *ngIf="f.situacao.errors.required">Situação is required</div>
+                        </div>
+                      </div>
+
+                      <!-- <div class="form-group m-form__group">
+                        <label for="prioridade">Prioridade:</label>
+                        <select formControlName="prioridade" class="form-control m-input m-input--square" id="prioridade" [ngClass]="{ 'is-invalid': submitted && f.categoriaId.errors }">
+                          <option value="" selected>Selecione</option>
+                          <option *ngFor="let prioridade of prioridades" value="{{prioridade.id}}">
+                            {{prioridade.text}}
+                          </option>
+                        </select>
+                      </div> -->
+
+                      <div class="form-group m-form__group">
+                        <label for="tipoOperacao">Tipo Operação:</label>
+                        <select formControlName="tipoOperacao" class="form-control m-input m-input--square" id="tipoOperacao" [ngClass]="{ 'is-invalid': submitted && f.categoriaId.errors }">
+                          <option value="" selected>Selecione</option>
+                          <option *ngFor="let tipoOperacao of tipoOperacoes" value="{{tipoOperacao.id}}">
+                          {{tipoOperacao.text}}
+                          </option>
+                        </select>
+                        <div *ngIf="submitted && f.tipoOperacao.errors" class="invalid-feedback">
+                          <div *ngIf="f.tipoOperacao.errors.required">Tipo Operação is required</div>
+                        </div>
+                      </div>
+
+
                       <!-- <div class="m-form__group form-group">
                         <label for="">Communication:</label>
                         <div class="m-checkbox-list">
@@ -77,7 +155,7 @@
                   </div>
                   <div class="m-portlet__foot m-portlet__foot--fit">
                     <div class="m-form__actions m-form__actions">
-                      <button type="reset" class="btn btn-primary">Submit</button>
+                      <button class="btn btn-primary">Submit</button>
                       <button type="reset" class="btn btn-secondary">Cancel</button>
                     </div>
                   </div>
